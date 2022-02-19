@@ -26,8 +26,7 @@ public class Product {
     @Column(name = "value")
     private Double value;
 
-    @ManyToMany
-    @JoinColumn(name = "quantity_ingredient_id")
+    @OneToMany
     private List<QuantityIngredient> quantityIngredients;
 
 }
