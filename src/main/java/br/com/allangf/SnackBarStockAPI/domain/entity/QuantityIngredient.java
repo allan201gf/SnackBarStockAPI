@@ -17,13 +17,13 @@ public class QuantityIngredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Double quantityIngredientId;
+    private int quantityIngredientId;
 
     @Column(name = "quantity")
     private Double quantity;
 
     @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredients;
+    @JoinColumn(name = "ingredient")
+    private Ingredient ingredient;
 
 }
