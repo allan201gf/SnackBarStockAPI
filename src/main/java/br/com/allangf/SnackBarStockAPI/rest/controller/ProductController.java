@@ -3,6 +3,7 @@ package br.com.allangf.SnackBarStockAPI.rest.controller;
 
 import br.com.allangf.SnackBarStockAPI.domain.entity.Product;
 import br.com.allangf.SnackBarStockAPI.rest.config.dto.ProductDTO;
+import br.com.allangf.SnackBarStockAPI.rest.config.dto.ProductProductionCostDTO;
 import br.com.allangf.SnackBarStockAPI.rest.service.impl.ProductServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
@@ -24,10 +25,22 @@ public class ProductController {
         productService.registerNewProduct(productDTO);
     }
 
+    @ApiOperation("All products cost")
+    @GetMapping("/v1/all-costs")
+    public List<ProductProductionCostDTO> allProductsCost() {
+        return productService.returnAllProductCost();
+    }
+
     @ApiOperation("All products")
-    @GetMapping("/v1")
+    @GetMapping("/v1/all-products")
     public List<Product> allProducts() {
         return productService.returnAllProduct();
+    }
+
+    @ApiOperation("Verify stock product")
+    @GetMapping("/v1/verify-stock-product")
+    public void verifyStockProduct(@RequestParam String productForVerify) {
+        productService.verifyStockProduct(productForVerify);
     }
 
 }

@@ -45,11 +45,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/v1/getloggeduser", "/api/ingredient/v1", "/api/product/v1")
+                // Urls required admin
+                .antMatchers(HttpMethod.POST, "/api/ingredient/v1", "/api/product/v1")
                 .hasRole(Roles.ADMIN)
                 .antMatchers(HttpMethod.DELETE, "/api/user/**")
                 .hasAnyRole(Roles.ADMIN)
-                .antMatchers(HttpMethod.GET, "/api/ingredient/v1", "/api/product/v1")
+                // Urls free
+                .antMatchers(HttpMethod.GET,
+                        "/api/ingredient/v1",
+                        "/api/product/v1/all-costs",
+                        "/api/product/v1/all-products",
+                        "/api/product/v1/verify-stock-product")
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/api/user/v1", "/api/user/v1/login")
                 .permitAll()
@@ -60,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-ui.html",
                         "/webjars/**",
                         "/h2-console/**",
+                        "/api/user/v1/getloggeduser",
                         "/")
                 .permitAll()
                 .anyRequest().denyAll()

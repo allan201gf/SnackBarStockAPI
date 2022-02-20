@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
         } catch (EmptyResultDataAccessException e) {
             throw new RuleOfException(Errors.USER_NOT_FOUND);
         } catch (Exception e) {
-            throw new RuleOfException(Errors.UNEBLE_DELETE_USER_ASSIGNED_POST);
+            throw new RuleOfException(Errors.UNABLE_DELETE_USER_ASSIGNED_POST);
         }
     }
 
