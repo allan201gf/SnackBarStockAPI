@@ -1,4 +1,4 @@
-# BlogAPI
+# SnackBarStockAPI
 
 Projeto de uma API para gerenciamento de estoque e produtos de uma lanchonete<br/>
 
