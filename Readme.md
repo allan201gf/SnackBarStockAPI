@@ -1,12 +1,12 @@
 # SnackBarStockAPI
 
-Projeto de uma API para gerenciamento de estoque e produtos de uma lanchonete<br/>
+Projeto de uma API para gerenciamento de estoque e produtos de uma lanchonete.<br/>
 
 Para facilitar os testes da API, ela foi desenvolvida utilizando o banco de dados H2, 
 um banco em memória que não há necessidade de executar um banco SQL fora da aplicação. 
 Em contrapartida, toda vez que o sistema é reiniciado, todos os dados são perdidos.
 <br>
-A Qualquer momento o banco pode ser alterado refaturando o arquivo abaixo.
+A qualquer momento o banco pode ser alterado refaturando o arquivo abaixo.
 > resources/application.properties
 
 A documentação dos endpoints é feita via Swagger no link abaixo e algumas informações podem ser consultadas neste mesmo arquivo.
@@ -26,7 +26,7 @@ Para rodar o projeto não é necessário configurações extras, apenas clonar o
 ## Features
 
 ### Registro e Login de administrador
-É necessário estar logado na api para pode cadastrar ingredientes e produtos
+É necessário estar logado na api para pode cadastrar ingredientes e produtos.
 #### Cadastro do administrador
 Para cadastrar um usuário devemos bater no endpoint:
 
@@ -70,6 +70,7 @@ DELETE  /api/user/v1/delete
 
 ### Ingredientes
 #### Criação de ingrediente
+
 > Para utilizar este endpoint o usuário deve estar logado
 ~~~
 POST  /api/ingredient/v1
@@ -78,11 +79,12 @@ Dados no body:
 ~~~
 {
   "name": "Cebola",
-  "quantity": 9,
-  "unit": "UNI",
+  "quantity": 9, (Double, quantidade disponível do ingrediente)
+  "unit": "UNI", (unidade de medida do ingrediente, sendo "KG" para quilos e "UNI" para unidades)
   "value": 2
 }
 ~~~
+
 #### Listagem dos ingredientes
 ~~~
 GET  /api/ingredient/v1
@@ -102,11 +104,11 @@ Dados no body:
   "name": "string",
   "quantityIngredients": [
     {
-      "ingredient": "string",
-      "quantity": 0
+      "ingredient": "nome do ingrediente cadastrado previamente",
+      "quantity": 0 (double, quantidade do ingrediente que vai na receita)
     }
   ],
-  "value": 0
+  "value": 0 (Double, valor de venda)
 }
 ~~~
 
